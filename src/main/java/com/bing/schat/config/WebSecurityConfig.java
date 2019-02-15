@@ -1,3 +1,4 @@
+/*
 package com.bing.schat.config;
 
 import org.springframework.context.annotation.Configuration;
@@ -17,12 +18,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.formLogin()
             .loginPage("/login.html")
             .successForwardUrl("/chat/index.html")
-            .failureForwardUrl("/login.html")
+            .failureForwardUrl("/login.html");
 
-            .and()
+            */
+/*.and()
             .authorizeRequests()
             .antMatchers("/login.html","/register.html","/css/**","/js/**", "/img/**","/fonts/**").permitAll()
             .anyRequest()
-            .authenticated(); //所有接口都必须经过身份验证
+            .authenticated(); //所有接口都必须经过身份验证*//*
+
     }
 }
+*/
