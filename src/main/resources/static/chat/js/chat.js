@@ -28,7 +28,7 @@ $('.conLeft li').on('click',function(){
 		var answer='';
 		answer+='<li>'+
 					'<div class="answerHead"><img src="img/tou.jpg"/></div>'+
-					'<div class="answers"><img class="jiao" src="img/jiao.jpg">'+arr[aa]+'</div>'+
+					'<div class="answers"><img class="jiao" src="/chat/img/jiao.jpg">'+arr[aa]+'</div>'+
 				'</li>';
 		$('.newsList').append(answer);	
 		$('.RightCont').scrollTop($('.RightCont')[0].scrollHeight );
@@ -43,8 +43,8 @@ $('.conLeft li').on('click',function(){
 		var imgSrc=$(this).children('img').attr('src');
 		var str="";
 		str+='<li>'+
-				'<div class="nesHead"><img src="img/6.jpg"/></div>'+
-				'<div class="news"><img class="jiao" src="img/20170926103645_03_02.jpg"><img class="Expr" src="'+imgSrc+'"></div>'+
+				'<div class="nesHead"><img src="/chat/img/6.jpg"/></div>'+
+				'<div class="news"><img class="jiao" src="/chat/img/20170926103645_03_02.jpg"><img class="Expr" src="'+imgSrc+'"></div>'+
 			'</li>';
 		$('.newsList').append(str);
 		$('.emjon').hide();
