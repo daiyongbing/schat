@@ -24,38 +24,31 @@
 		<div class="conLeft">
 			<ul>
 				<li class="bg">
-					<div class="liLeft"><img src="/chat/img/20170926103645_23.jpg"/></div>
-					<div class="liRight">
-						<span  class="intername">我的phone</span>
-						<span class="infor">[文件]</span>
-					</div>
-				</li>
-				<li>
 					<div class="liLeft"><img src="/chat/img/20170926103645_04.jpg"/></div>
 					<div class="liRight">
-						<span class="intername">区块链交流群</span>
-						<span class="infor">厉害了</span>
+						<span class="intername">区块链网友</span>
+						<span class="infor">[离线]</span>
 					</div>
 				</li>
 				<li>
 					<div class="liLeft"><img src="/chat/img/20170926103645_19.jpg"/></div>
 					<div class="liRight">
 						<span  class="intername">赵鹏</span>
-						<span class="infor">[流泪]</span>
+						<span class="infor">[离线]</span>
 					</div>
 				</li>
 				<li>
 					<div class="liLeft"><img src="/chat/img/20170926103645_27.jpg"/></div>
 					<div class="liRight">
 						<span  class="intername">web交流群</span>
-						<span class="infor">666</span>
+						<span class="infor">[离线]</span>
 					</div>
 				</li>
 				<li>
 					<div class="liLeft"><img src="/chat/img/20170926103645_27.jpg"/></div>
 					<div class="liRight">
 						<span  class="intername">前端交流群</span>
-						<span class="infor">前端小黑：怎么才能</span>
+						<span class="infor">[离线]</span>
 					</div>
 				</li>
 				
@@ -63,14 +56,14 @@
 					<div class="liLeft"><img src="/chat/img/20170926103645_19.jpg"/></div>
 					<div class="liRight">
 						<span  class="intername">赵小雅</span>
-						<span class="infor">[流泪]</span>
+						<span class="infor">[离线]</span>
 					</div>
 				</li>
 				<li>
 					<div class="liLeft"><img src="/chat/img/20170926103645_27.jpg"/></div>
 					<div class="liRight">
 						<span  class="intername">Java交流群</span>
-						<span class="infor">[流泪]</span>
+						<span class="infor">[离线]</span>
 					</div>
 				</li>
 				
@@ -78,14 +71,14 @@
 					<div class="liLeft"><img src="/chat/img/20170926103645_29.jpg"/></div>
 					<div class="liRight">
 						<span  class="intername">王二狗</span>
-						<span class="infor">[流泪]</span>
+						<span class="infor">[离线]</span>
 					</div>
 				</li>
 				<li>
 					<div class="liLeft"><img src="/chat/img/20170926103645_54.jpg"/></div>
 					<div class="liRight">
 						<span  class="intername">李大傻</span>
-						<span class="infor">[流泪]</span>
+						<span class="infor">[离线]</span>
 					</div>
 				</li>
 			</ul>
@@ -169,7 +162,7 @@
         /**
          * WebSocket客户端 PS：URL开头表示WebSocket协议 中间是域名端口 结尾是服务端映射地址
          */
-        var webSocket = new WebSocket(/*[[${webSocketUrl}]]*/ 'ws://localhost:8080/chat');
+        var webSocket = new WebSocket(/*[[${webSocketUrl}]]*/ 'ws://localhost:8080/chat/daiyongbing');
         /**
          * 当服务端打开连接
          */
@@ -190,7 +183,7 @@
             if (message.type === 'SPEAK') {
                 var answer='';
                 answer+='<li>'+
-                    '<div class="answerHead"><img src="img/tou.jpg"/></div>'+
+                    '<div class="answerHead"><img src="/chat/img/tou.jpg"/></div>'+
                     '<div class="answers"><img class="jiao" src="/chat/img/jiao.jpg">'+message.msg+'</div>'+
                     '</li>';
                 $('.newsList').append(answer);
@@ -236,8 +229,8 @@
 
             var str='';
             str+='<li>'+
-                '<div class="nesHead"><img src="img/6.jpg"/></div>'+
-                '<div class="news"><img class="jiao" src="img/20170926103645_03_02.jpg">'+$message.val()+'</div>'+
+                '<div class="nesHead"><img src="/chat/img/6.jpg"/></div>'+
+                '<div class="news"><img class="jiao" src="/chat/img/20170926103645_03_02.jpg">'+$message.val()+'</div>'+
                 '</li>';
             $('.newsList').append(str);
         }
@@ -256,6 +249,34 @@
         var e = event || window.event || arguments.callee.caller.arguments[0];
         e.keyCode === 13 && sendMsgToServer();
     };
+
+    /**************************界面操作**************************/
+    $('.conLeft li').on('click',function(){
+        $(this).addClass('bg').siblings().removeClass('bg');
+        var intername=$(this).children('.liRight').children('.intername').text();
+        $('.headName').text(intername);
+        $('.newsList').html('');
+    })
+
+    $('.ExP').on('mouseenter',function(){
+        $('.emjon').show();
+    })
+
+    $('.emjon').on('mouseleave',function(){
+        $('.emjon').hide();
+    })
+
+    $('.emjon li').on('click',function(){
+        var imgSrc=$(this).children('img').attr('src');
+        var str="";
+        str+='<li>'+
+            '<div class="nesHead"><img src="/chat/img/6.jpg"/></div>'+
+            '<div class="news"><img class="jiao" src="/chat/img/20170926103645_03_02.jpg"><img class="Expr" src="'+imgSrc+'"></div>'+
+            '</li>';
+        $('.newsList').append(str);
+        $('.emjon').hide();
+        $('.RightCont').scrollTop($('.RightCont')[0].scrollHeight );
+    })
 </script>
 
 </body>

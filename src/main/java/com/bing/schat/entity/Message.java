@@ -1,43 +1,62 @@
 package com.bing.schat.entity;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+
+import java.util.Date;
 
 //@AllArgsConstructor
 @Data
 public class Message {
-    public static final String ENTER = "ENTER";
+    public static final String ONLINE = "ONLINE";   //上线
     public static final String SPEAK = "SPEAK";
-    public static final String QUIT = "QUIT";
+    public static final String OFFLINE = "OFFLINE"; //离线
 
-    private String type;//消息类型
-    private String username; //发送人
+    private String type;    //消息类型
+    private String username;    //发送人
     private String msg; //发送消息
-    private int onlineCount; //在线用户数
+    private String time;  // 消息发送时间
 
+
+
+
+    public Message(String username, String message, String time) {
+        this.username = username;
+        this.msg = msg;
+        this.time = time;
+    }
+
+    public Message(String type, String username, String message, String time, int onlineCount) {
+        this.type = type;
+        this.username = username;
+        this.msg = message;
+        this.time = time;
+    }
+
+    public Message(String type, String username, String msg, int onlineTotal) {
+        this.type = type;
+        this.username = username;
+        this.msg = msg;
+    }
 
     public static String jsonStr(String type, String username, String msg, int onlineTotal) {
         return JSON.toJSONString(new Message(type, username, msg, onlineTotal));
     }
 
-    public Message(String type, String username, String msg, int onlineCount) {
-        this.type = type;
-        this.username = username;
-        this.msg = msg;
-        this.onlineCount = onlineCount;
-    }
 
-    public static String getENTER() {
-        return ENTER;
-    }
 
     public static String getSPEAK() {
         return SPEAK;
     }
 
-    public static String getQUIT() {
-        return QUIT;
+    public static String getONLINE() {
+        return ONLINE;
+    }
+
+    public static String getOFFLINE() {
+        return OFFLINE;
     }
 
     public String getType() {
@@ -56,6 +75,11 @@ public class Message {
         this.username = username;
     }
 
+
+    public String getTime() {
+        return time;
+    }
+
     public String getMsg() {
         return msg;
     }
@@ -64,11 +88,8 @@ public class Message {
         this.msg = msg;
     }
 
-    public int getOnlineCount() {
-        return onlineCount;
+    public void setTime(String time) {
+        this.time = time;
     }
 
-    public void setOnlineCount(int onlineCount) {
-        this.onlineCount = onlineCount;
-    }
 }

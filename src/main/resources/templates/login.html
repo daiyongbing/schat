@@ -132,20 +132,19 @@
 
 <script>
     /**
-     * 登陆聊天
+     * 登陆跳转
      */
     function login() {
         location.href = '/index?username='+$('#username').val();
     }
+
     /**
-     * 使用ENTER登陆
+     * 启用enter键
      */
     document.onkeydown = function (event) {
         var e = event || window.event || arguments.callee.caller.arguments[0];
         e.keyCode === 13 && login();
     };
 </script>
-
-
 </body>
 </html>

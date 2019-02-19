@@ -33,7 +33,7 @@ public class Schat {
         //ModelAndView mav = new ModelAndView("/chat");
         ModelAndView mav = new ModelAndView("/index");
         mav.addObject("username", username);
-        mav.addObject("webSocketUrl", "ws://"+ InetAddress.getLocalHost().getHostAddress()+":"+request.getServerPort()+request.getContextPath()+"/chat");
+        mav.addObject("webSocketUrl", "ws://"+ InetAddress.getLocalHost().getHostAddress()+":"+request.getServerPort()+request.getContextPath()+"/chat/"+username);
         return mav;
     }
 
